@@ -1,15 +1,5 @@
-<<<<<<< HEAD
 FROM registry.access.redhat.com/rhel6
-=======
-FROM registry.access.redhat.com/rhel7
->>>>>>> ce2461fad8a58910809f06a210d7fdf891e3dc31
 
-#RUN yum -y update; yum clean all
-#RUN yum -y install httpd; yum clean all
-#RUN echo "Apache" >> /var/www/html/index.html
-RUN curl -k -o unzip-6.0-15.el7.x86_64.rpm -L ftp://ftp.pbone.net/mirror/ftp.scientificlinux.org/linux/scientific/7.2/x86_64/os/Packages/unzip-6.0-15.el7.x86_64.rpm && rpm -Uvh unzip-6.0-15.el7.x86_64.rpm
-
-<<<<<<< HEAD
 ADD ./openshift-origin-deps.repo /etc/yum.repos.d/openshift-origin-deps.repo
 
 RUN yum -y update
@@ -35,13 +25,3 @@ EXPOSE 9000
 #RUN chmod -v +x /myscript.sh
 #CMD ["/myscript.sh"]
 #RUN apt-get update && apt-get install -y curl unzip default-jre
-=======
-RUN curl -k -o sonar.zip -L https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-5.4.zip && unzip sonar && chmod -R 777 /sonarqube-5*/logs /sonarqube-5*/bin/linux-x86-64 /sonarqube-5*/temp /sonarqube-5*/data /sonarqube-5*/extensions /sonarqube-5*/web && rm sonar.zip
-ADD sonar.properties /sonarqube-5*/conf/sonar.properties
-
-EXPOSE 9000
-
-
-CMD /sonarqube-5*/bin/linux-x86-64/sonar.sh console
-
->>>>>>> ce2461fad8a58910809f06a210d7fdf891e3dc31
